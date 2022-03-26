@@ -1,0 +1,4 @@
+HP: 100
+Attack: 1
+Magic: 0
+Speed: 3

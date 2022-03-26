@@ -1,0 +1,10 @@
+Moving north towards the light, you still hear monsters roaring in the background but, you keep moving forward. 
+Until it feels like you step on some pointy rock.
+
+[pick up, Ignore]
+
+You keep moving north, and it looks like the artificial light is getting brighter, but at the same time, 
+a roar gets louder.
+
+[Move to next Room]
+[Auto saves]

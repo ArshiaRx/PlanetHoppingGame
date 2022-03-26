@@ -1,0 +1,4 @@
+You should be careful this planet is crawling with monsters. 
+I advise you to move with caution.
+I will begin analyzing this planet for information in case you need it.
+[Start analyzing the planet]:
