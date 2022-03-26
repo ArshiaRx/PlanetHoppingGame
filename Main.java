@@ -18,6 +18,10 @@ public class Main
             Inh.readRoomFile();
             Inh.readCharacterFile();
             Inh.passiveMode();
+            Inh.North();
+            Inh.FirstEast();
+            Inh.West();
+            Inh.South("check");
         }
         catch(Exception e){
             System.out.println("Not Found");
