@@ -17,7 +17,6 @@ public class Main
         try{
             Inh.readRoomFile();
             Inh.readCharacterFile();
-            Inh.passiveMode();
             Inh.North();
             Inh.FirstEast();
             Inh.West();

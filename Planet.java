@@ -5,6 +5,7 @@ import java.util.*;
  */
 interface Planet {
     interface room{
+        
         public void readRoomFile()throws Exception;
         public void North()throws Exception;
         public void FirstEast()throws Exception;
@@ -12,13 +13,12 @@ interface Planet {
         public void South() throws Exception;
         interface character{
             public void readCharacterFile() throws Exception;
-            public void passiveMode() throws Exception;
         }
         interface items{
             public void readItemFile();
         }
         interface monster{
-            public void readMonsterFile();
+            public void readMonsterFile() throws Exception;
         }
     }
 }
