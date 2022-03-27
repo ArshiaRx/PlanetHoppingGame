@@ -11,16 +11,35 @@ public class Main
         
         PlanetHades H = new PlanetHades();
         PlanetHades.roomOne Inh = H.new roomOne();
-        PlanetHades.roomOne L = H.new roomOne();
-        
+        PlanetHades.RoomTwo L = H.new RoomTwo();
+        PlanetHades.RoomThree K = H.new RoomThree();
 
         try{
             Inh.readRoomFile();
             Inh.readCharacterFile();
-            Inh.North();
             Inh.FirstEast();
             Inh.West();
-            Inh.South("check");
+            Inh.South();
+            Inh.North();
+            L.readMonsterFile();
+            L.assistant();
+            L.readRoomFile();
+            L.readCharacterFile();
+            L.Ask();
+            L.Boom();
+            L.Run();
+            Inh.RunBack();
+            Inh.HandOver();
+            Inh.SecondEast();
+            K.readRoomFile();
+            K.FirstEast();
+            K.North();
+            K.readCharacterFile();
+            K.readMonsterFile();
+            K.CaveAttack();
+            K.EndOfBattle();
+            K.Alex();
+            K.EndPlanet();
         }
         catch(Exception e){
             System.out.println("Not Found");
