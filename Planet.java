@@ -4,8 +4,6 @@ import java.util.*;
  * Planet class
  */
 interface Planet {
-    public void Inventory()throws Exception;
-    public void ClearInventory() throws Exception;
     interface room{
         public void readRoomFile()throws Exception;
         public void North()throws Exception;

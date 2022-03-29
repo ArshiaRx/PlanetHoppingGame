@@ -8,9 +8,10 @@ import java.io.*;
  */
 class PlanetHades implements Planet
 {
-    public void Inventory()throws Exception{
-        //allows player to see what in there inventory
-        File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\PlayerCharacter\\Inventory.txt");
+    public void PassiveAssistantMode() throws Exception{
+        //This is the assistants passivemode
+        //so when the player is or is not interacting with the assistant this is what is happening
+        File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Android Assistant\\passive mode.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
             
         String st;
@@ -18,16 +19,27 @@ class PlanetHades implements Planet
             System.out.println(st);
                 
         } 
-        br.close();
+        br.close();    
+    }
+    public void PassiveAlexenderMode() throws Exception{
+        //This is Alexenders passive mode in the first room
+        //if the player is not on the planet, or has moved passed this planet this is what alexender is doing
+        //this is what alexender does before the player enters the 2nd room but changes after a story event
+        //the explosion later on
+        File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Alexender\\FirstpassiveMode.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+            st = br.readLine();
+            System.out.println(st);
     
     }
-    public void ClearInventory() throws Exception{
-        //clears inventory at the end of the game
-        BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\Hades\\Room 1\\Character\\PlayerCharacter\\Inventory.txt"));
-        toInven.write("");
-        toInven.close();
+    public void SecondPassiveAlexenderMode() throws Exception{
+        File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Alexender\\SecondpassiveMode.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+            st = br.readLine();
+            System.out.println(st);
     }
-    
     //Room One begins
     
     class roomOne implements PlanetHades.room.character, PlanetHades.room{
@@ -60,10 +72,9 @@ class PlanetHades implements Planet
             File file = new File("Game\\Planet\\Hades\\Room 1\\North\\North.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             
+            Commands pick = new Commands();
             File item = new File("Game\\Planet\\Hades\\Room 1\\Items\\redDiamond\\Description.txt");
             BufferedReader red = new BufferedReader(new FileReader(item));
-            
-            BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\Hades\\Room 1\\Character\\PlayerCharacter\\Inventory.txt", true));
             
             String st, dia;
             while((st = br.readLine()) != null){
@@ -72,11 +83,11 @@ class PlanetHades implements Planet
                     
                     while((dia = red.readLine()) != null){
                         if(dia.contains("Red Diamond")){
-                            toInven.write("Red Diamond\n");
+                            pick.PickUP("Red Diamond\n");
                         }
                         System.out.println(dia);
                     }
-                    toInven.close();
+    
                 }else{
                     System.out.println(st);
                 }
@@ -114,7 +125,7 @@ class PlanetHades implements Planet
             //the player goes south and puts book in inventory
             File file = new File("Game\\Planet\\Hades\\Room 1\\South\\South.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
-                
+            Commands pick = new Commands();
             String st;
             while((st = br.readLine()) != null){
                 System.out.println(st);
@@ -122,7 +133,6 @@ class PlanetHades implements Planet
             
             if(userInput.contains("check")){
                 File pathSkele = new File("Game\\Planet\\Hades\\Room 1\\South\\Skeleton\\LyingSkeleton.txt");
-                BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\Hades\\Room 1\\Character\\PlayerCharacter\\Inventory.txt", true));
                 BufferedReader skele = new BufferedReader(new FileReader(pathSkele));
                 
                 String text, recite;
@@ -131,13 +141,14 @@ class PlanetHades implements Planet
                         File item = new File("Game\\Planet\\Hades\\Room 1\\Items\\BookOfHades\\Description.txt");
                         BufferedReader book = new BufferedReader(new FileReader(item));
                         
+                        
                         while((recite = book.readLine()) != null){
                             if(recite.contains("Book of planet hades")){
-                                toInven.write("Book of planet hades\n");
+                                pick.PickUP("Book of planet hades\n");
                             }
                             System.out.println(recite);
                         }
-                        toInven.close();
+                
                     }else{
                         System.out.println(text);
                     }
@@ -171,33 +182,21 @@ class PlanetHades implements Planet
             fixShip.close();
         }
         public void HandOver() throws Exception{
-            //When the player hands over the redDiamond
-            File inputFile = new File("Game\\Planet\\Hades\\Room 1\\Character\\PlayerCharacter\\Inventory.txt");
-            File tempFile = new File("Game\\Planet\\Hades\\Room 1\\Character\\PlayerCharacter\\myTempFile.txt");
+            //When the player hands over the redDiamond to Alexender
             File give = new File("Game\\Planet\\Hades\\Room 1\\Character\\Alexender\\HandOverRed.txt");
             
-            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+    
             BufferedReader Alex = new BufferedReader(new FileReader(give));
-            BufferedWriter send = new BufferedWriter(new FileWriter(tempFile));
+            Commands hand = new Commands();
             
             String removeRed = "Red Diamond";
-            String current, goodJob;
+            hand.Give(removeRed);
+            
+            String goodJob;
+            
+            
             goodJob = Alex.readLine();
             System.out.println(goodJob);
-            while((current = reader.readLine()) != null){
-                current = current.trim();
-                if(current.equals(removeRed)){
-                    continue;
-                }else{
-                    send.write(current + "\n");
-                
-                }
-            }
-            
-            send.close();
-            reader.close();
-            inputFile.delete();
-            boolean succ = tempFile.renameTo(inputFile);
         }
         public void SecondEast() throws Exception{
             //You head East to Room 3
@@ -270,6 +269,18 @@ class PlanetHades implements Planet
             br.close();
             
         }
+        public void StartBattle() throws Exception{
+            //second room battle starts
+            File file = new File("Game\\Planet\\Hades\\Room 2\\Monster\\battle\\startbattle.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+                
+            String st;
+            while((st = br.readLine()) != null){
+                System.out.println(st);
+            } 
+            br.close();
+        
+        }
         public void assistant() throws Exception{
             //Your companion tells you something is lurking in the background
             File file = new File("Game\\Planet\\Hades\\Room 2\\Character\\Android Assistant\\room2 dialog.txt");
@@ -341,7 +352,7 @@ class PlanetHades implements Planet
             br.close();
         }
         public void North()throws Exception{
-            
+            //When the player goes north in the third room
             File file = new File("Game\\Planet\\Hades\\Room 3\\North\\North.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
@@ -353,6 +364,7 @@ class PlanetHades implements Planet
         
         }
         public void FirstEast()throws Exception{
+            //When the player goes East
             File file = new File("Game\\Planet\\Hades\\Room 3\\East\\East.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             
@@ -372,6 +384,7 @@ class PlanetHades implements Planet
             System.out.println("No application here.");
         }
         public void readMonsterFile() throws Exception{
+            // before the monster attacks
             File file = new File("Game\\Planet\\Hades\\Room 3\\Monster\\Action\\Action.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
                 
@@ -382,6 +395,7 @@ class PlanetHades implements Planet
             br.close();
         }
         public void CaveAttack() throws Exception{
+            //When monster attacks
         
             File file = new File("Game\\Planet\\Hades\\Room 3\\cave.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -393,6 +407,7 @@ class PlanetHades implements Planet
             br.close();
         }
         public void EndOfBattle()throws Exception{
+            //When the battle ends
             File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\PlayerCharacter\\EndOfBattle.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
                 
@@ -406,6 +421,7 @@ class PlanetHades implements Planet
         
         }
         public void Alex() throws Exception{
+            //Alexender shows up again
             File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\Alexender\\EndGame.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
                 
@@ -417,7 +433,7 @@ class PlanetHades implements Planet
             br.close();
         }
         public void EndPlanet() throws Exception{
-            
+            //The end of the planet
             File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\PlayerCharacter\\End.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
                 

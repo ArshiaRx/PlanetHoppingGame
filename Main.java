@@ -13,24 +13,37 @@ public class Main
         PlanetHades.roomOne Inh = H.new roomOne();
         PlanetHades.RoomTwo L = H.new RoomTwo();
         PlanetHades.RoomThree K = H.new RoomThree();
+        Commands I = new Commands();
 
         try{
             Inh.readRoomFile();
             Inh.readCharacterFile();
+            
+            H.PassiveAssistantMode();
+            H.PassiveAlexenderMode();
+            
+            
             Inh.FirstEast();
             Inh.West();
             Inh.South();
             Inh.North();
+            
+
+            I.Inventory();
+            
             L.readMonsterFile();
             L.assistant();
+            L.StartBattle();
             L.readRoomFile();
             L.readCharacterFile();
             L.Ask();
             L.Boom();
             L.Run();
             Inh.RunBack();
+            H.SecondPassiveAlexenderMode();
             Inh.HandOver();
             Inh.SecondEast();
+            
             K.readRoomFile();
             K.FirstEast();
             K.North();
@@ -40,6 +53,10 @@ public class Main
             K.EndOfBattle();
             K.Alex();
             K.EndPlanet();
+        
+            
+
+        
         }
         catch(Exception e){
             System.out.println("Not Found");
