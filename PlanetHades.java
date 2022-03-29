@@ -8,6 +8,7 @@ import java.io.*;
  */
 class PlanetHades implements Planet
 {
+
     public void PassiveAssistantMode() throws Exception{
         //This is the assistants passivemode
         //so when the player is or is not interacting with the assistant this is what is happening
@@ -327,7 +328,7 @@ class PlanetHades implements Planet
     
     class RoomThree implements PlanetHades.room.character, PlanetHades.room, PlanetHades.room.monster{
         public void readCharacterFile() throws Exception{
-            //the robot Assistant dialog
+            //the robot Assistant dialog after going North
             File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\Android Assistant\\Room 3 dialog.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
                 
@@ -336,6 +337,7 @@ class PlanetHades implements Planet
                 System.out.println(st);
             } 
             br.close();
+            
             
         }
         public void readRoomFile()throws Exception{
@@ -406,6 +408,32 @@ class PlanetHades implements Planet
             } 
             br.close();
         }
+        public void Attack()throws Exception{
+            //Battle inside the cave attack by the player
+            //Maybe instead we pass the A into a file in battle monster so we can reuse the command
+            //in progess
+            int strike, chance;
+            String file = "Game\\Planet\\Hades\\Room 3\\Monster\\NumberOfHit.txt";
+            String Condition = "";
+            
+            GenerateAttack fight = new GenerateAttack();
+            GenerateAttack powerUp = new GenerateAttack();
+            powerUp.setcriticalHit(20);
+            System.out.println(fight.getAttack());
+            System.out.println(powerUp.getcriticalHit());
+            strike = fight.getAttack();
+            chance = powerUp.getcriticalHit();
+            if(strike >= 3 && chance >= 5){
+                Condition = "AAA";
+            }
+            else if(strike >= 3){
+                Condition = Condition + "A";
+            }
+            Win con = new Win();
+            con.WinCondition(Condition, file);
+            
+            
+        }
         public void EndOfBattle()throws Exception{
             //When the battle ends
             File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\PlayerCharacter\\EndOfBattle.txt");
@@ -421,7 +449,7 @@ class PlanetHades implements Planet
         
         }
         public void Alex() throws Exception{
-            //Alexender shows up again
+            //Alexender shows up again after the battle
             File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\Alexender\\EndGame.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
                 

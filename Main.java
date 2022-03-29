@@ -50,9 +50,11 @@ public class Main
             K.readCharacterFile();
             K.readMonsterFile();
             K.CaveAttack();
+            K.Attack();
             K.EndOfBattle();
             K.Alex();
             K.EndPlanet();
+            I.ClearInventory();
         
             
 

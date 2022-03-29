@@ -10,7 +10,7 @@ public class Commands
 {
     public void PickUP(String item) throws Exception{
         //Allows player to pick up items
-        BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\playerInventory\\Inventory.txt", true));
+        BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\Player\\Inventory.txt", true));
         toInven.write(item);
         toInven.close();
     
@@ -18,7 +18,7 @@ public class Commands
     }
     public void Inventory()throws Exception{
         //allows player to see what in there inventory
-        File file = new File("Game\\Planet\\playerInventory\\Inventory.txt");
+        File file = new File("Game\\Planet\\Player\\Inventory.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
             
         String st;
@@ -31,8 +31,8 @@ public class Commands
     }
     public void Give(String remov) throws Exception{
         //When an item is removed from the inventory of the player
-        File inputFile = new File("Game\\Planet\\playerInventory\\Inventory.txt");
-        File tempFile = new File("Game\\Planet\\Hades\\Room 1\\Character\\PlayerCharacter\\myTempFile.txt");
+        File inputFile = new File("Game\\Planet\\Player\\Inventory.txt");
+        File tempFile = new File("Game\\Planet\\Player\\myTempFile.txt");
         
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter send = new BufferedWriter(new FileWriter(tempFile));
@@ -54,7 +54,7 @@ public class Commands
     }
     public void ClearInventory() throws Exception{
         //clears inventory at the end of the game
-        BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\playerInventory\\Inventory.txt"));
+        BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\Player\\Inventory.txt"));
         toInven.write("");
         toInven.close();
     }
