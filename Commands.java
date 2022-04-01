@@ -11,7 +11,9 @@ public class Commands
     public void PickUP(String item) throws Exception{
         //Allows player to pick up items
         BufferedWriter toInven = new BufferedWriter(new FileWriter("Game\\Planet\\Player\\Inventory.txt", true));
+        
         toInven.write(item);
+        toInven.newLine();
         toInven.close();
     
     
@@ -33,14 +35,22 @@ public class Commands
         //When an item is removed from the inventory of the player
         File inputFile = new File("Game\\Planet\\Player\\Inventory.txt");
         File tempFile = new File("Game\\Planet\\Player\\myTempFile.txt");
+        boolean flag;
+        flag = false;
         
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter send = new BufferedWriter(new FileWriter(tempFile));
         
         String current;
         while((current = reader.readLine()) != null){
-                current = current.trim();
-                if(current.equals(remov)){
+                System.out.println(current.matches(".*[a-zA-Z]+.*"));
+                if(!current.matches(".*[a-zA-Z]+.*")){
+                    flag = false;
+                }
+                if(current.contains(remov)){
+                    flag = true;
+                    continue;
+                }else if(flag){
                     continue;
                 }else{
                     send.write(current + "\n");

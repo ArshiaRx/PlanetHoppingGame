@@ -10,7 +10,7 @@ public class GenerateAttack
 {
     private int playerAttack;
     private int criticalHit;
-    GenerateAttack(){
+    public GenerateAttack(){
         Random dice = new Random();
         this.playerAttack = dice.nextInt(7);
         this.criticalHit = dice.nextInt(10);

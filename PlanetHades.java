@@ -83,9 +83,7 @@ class PlanetHades implements Planet
                     
                     
                     while((dia = red.readLine()) != null){
-                        if(dia.contains("Red Diamond")){
-                            pick.PickUP("Red Diamond\n");
-                        }
+                        pick.PickUP(dia);
                         System.out.println(dia);
                     }
     
@@ -144,9 +142,7 @@ class PlanetHades implements Planet
                         
                         
                         while((recite = book.readLine()) != null){
-                            if(recite.contains("Book of planet hades")){
-                                pick.PickUP("Book of planet hades\n");
-                            }
+                            pick.PickUP(recite);
                             System.out.println(recite);
                         }
                 
@@ -415,22 +411,9 @@ class PlanetHades implements Planet
             int strike, chance;
             String file = "Game\\Planet\\Hades\\Room 3\\Monster\\NumberOfHit.txt";
             String Condition = "";
+            AttackMonster damage = new AttackMonster();
+            System.out.println(damage.DealDamage(true, file));
             
-            GenerateAttack fight = new GenerateAttack();
-            GenerateAttack powerUp = new GenerateAttack();
-            powerUp.setcriticalHit(20);
-            System.out.println(fight.getAttack());
-            System.out.println(powerUp.getcriticalHit());
-            strike = fight.getAttack();
-            chance = powerUp.getcriticalHit();
-            if(strike >= 3 && chance >= 5){
-                Condition = "AAA";
-            }
-            else if(strike >= 3){
-                Condition = Condition + "A";
-            }
-            Win con = new Win();
-            con.WinCondition(Condition, file);
             
             
         }

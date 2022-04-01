@@ -8,14 +8,16 @@ import java.io.*;
  */
 public class Win
 {
-    // instance variables - replace the example below with your own
     public boolean WinCondition(String hits, String path) throws Exception{
         //if the player hits the monster a certain about of time then he defeats the Monster
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
         st = br.readLine();
-        if(hits == st){
+        st = st.trim();
+        System.out.println(st);
+        System.out.println(hits);
+        if(hits.equals(st)){
             return true;
         
         }
