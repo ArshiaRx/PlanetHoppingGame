@@ -10,6 +10,8 @@ public class Win
 {
     public boolean WinCondition(String hits, String path) throws Exception{
         //if the player hits the monster a certain about of time then he defeats the Monster
+        //Acts has the win condition true when the player/monster has dealt enought damage to player/monster
+        //False if not enough
         AttackMonster res = new AttackMonster();
         File file = new File(path);
         

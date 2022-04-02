@@ -8,6 +8,8 @@ import java.io.*;
  */
 public class GenerateAttack
 {
+    //rolls a number to see if it will hit
+    //or if the player will one hit the monster
     private int Attacker;
     private int criticalHit;
     public GenerateAttack(){

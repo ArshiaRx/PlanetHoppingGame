@@ -10,6 +10,7 @@ import java.io.*;
 
 public class AttackMonster
 {
+    //keeps track of how many times the player or monster hits each other
     private static String Condition = "";
     public static void resetCondition(){
         Condition = "";

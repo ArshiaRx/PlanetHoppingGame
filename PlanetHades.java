@@ -81,7 +81,7 @@ class PlanetHades implements Planet
             while((st = br.readLine()) != null){
                 if(st.contains("[pick up]")){
                     
-                    
+                    //copies in entire item name and descritption
                     while((dia = red.readLine()) != null){
                         pick.PickUP(dia);
                         System.out.println(dia);
@@ -119,9 +119,10 @@ class PlanetHades implements Planet
         
         }
         public void South() throws Exception{
-            String userInput = "check";
             //reads an input of the user to either check out the skeleton or not
             //the player goes south and puts book in inventory
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            
             File file = new File("Game\\Planet\\Hades\\Room 1\\South\\South.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             Commands pick = new Commands();
@@ -129,12 +130,13 @@ class PlanetHades implements Planet
             while((st = br.readLine()) != null){
                 System.out.println(st);
             }
-            
+            String userInput = reader.readLine();
             if(userInput.contains("check")){
                 File pathSkele = new File("Game\\Planet\\Hades\\Room 1\\South\\Skeleton\\LyingSkeleton.txt");
                 BufferedReader skele = new BufferedReader(new FileReader(pathSkele));
                 
                 String text, recite;
+                //copies in entire item name and descritption
                 while((text = skele.readLine()) != null){
                     if(text.contains("[Update inventory with “Book of planet hades”]")){
                         File item = new File("Game\\Planet\\Hades\\Room 1\\Items\\BookOfHades\\Description.txt");

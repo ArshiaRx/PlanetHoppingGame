@@ -33,6 +33,8 @@ public class Commands
     }
     public void Give(String remov) throws Exception{
         //When an item is removed from the inventory of the player
+        //When the program arrives at a line that does not have letters in it 
+        //the program stops removing
         File inputFile = new File("Game\\Planet\\Player\\Inventory.txt");
         File tempFile = new File("Game\\Planet\\Player\\myTempFile.txt");
         boolean flag;
