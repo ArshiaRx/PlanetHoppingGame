@@ -8,15 +8,19 @@ import java.io.*;
  */
 public class GenerateAttack
 {
-    private int playerAttack;
+    private int Attacker;
     private int criticalHit;
     public GenerateAttack(){
         Random dice = new Random();
-        this.playerAttack = dice.nextInt(7);
+        this.Attacker = dice.nextInt(15);
         this.criticalHit = dice.nextInt(10);
     }
     public int getAttack(){
-        return playerAttack;
+        return Attacker;
+    }
+    public void setAttack(int newAttack){
+        Random dice = new Random();
+        this.Attacker = dice.nextInt(newAttack);
     }
     public int getcriticalHit(){
         return criticalHit;

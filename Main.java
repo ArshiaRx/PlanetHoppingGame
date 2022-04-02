@@ -34,6 +34,12 @@ public class Main
             L.readMonsterFile();
             L.assistant();
             L.StartBattle();
+            
+            L.AttackFirstMonster();
+            L.AttackFirstMonster();
+            System.out.println();
+            L.MonsterAttacking();
+            
             L.readRoomFile();
             L.readCharacterFile();
             L.Ask();
@@ -50,12 +56,18 @@ public class Main
             K.readCharacterFile();
             K.readMonsterFile();
             K.CaveAttack();
+            
             K.Attack();
-            K.Attack();
-            K.Attack();
+            System.out.println(K.Attack());
+            System.out.println();
+            System.out.println(K.MonsterResponse());
+            System.out.println(K.MonsterResponse());
+        
             K.EndOfBattle();
             K.Alex();
             K.EndPlanet();
+            
+            I.ClearInventory();
             
             
         

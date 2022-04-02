@@ -43,7 +43,6 @@ public class Commands
         
         String current;
         while((current = reader.readLine()) != null){
-                System.out.println(current.matches(".*[a-zA-Z]+.*"));
                 if(!current.matches(".*[a-zA-Z]+.*")){
                     flag = false;
                 }

@@ -10,14 +10,19 @@ public class Win
 {
     public boolean WinCondition(String hits, String path) throws Exception{
         //if the player hits the monster a certain about of time then he defeats the Monster
+        AttackMonster res = new AttackMonster();
         File file = new File(path);
+        
         BufferedReader br = new BufferedReader(new FileReader(file));
+        
         String st;
         st = br.readLine();
         st = st.trim();
-        System.out.println(st);
-        System.out.println(hits);
+        if(hits != "miss"){
+            System.out.println(hits.length() + " of " + st.length());
+        }
         if(hits.equals(st)){
+            res.resetCondition();
             return true;
         
         }

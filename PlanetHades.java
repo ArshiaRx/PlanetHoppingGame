@@ -35,6 +35,7 @@ class PlanetHades implements Planet
     
     }
     public void SecondPassiveAlexenderMode() throws Exception{
+        //After your the explosion alexenders passive mode changes to a new text
         File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Alexender\\SecondpassiveMode.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
@@ -42,7 +43,6 @@ class PlanetHades implements Planet
             System.out.println(st);
     }
     //Room One begins
-    
     class roomOne implements PlanetHades.room.character, PlanetHades.room{
         public void readRoomFile() throws Exception{
             //The description of room 1
@@ -213,17 +213,19 @@ class PlanetHades implements Planet
     
     class RoomTwo implements PlanetHades.room.character, room.monster, PlanetHades.room{
         //Direction in this room is meaningless since you fight a monster here
+        DirectionLess less = new DirectionLess();
+        
         public void North()throws Exception{
-            System.out.println("No application here.");
+            less.Nothing();
         }
         public void FirstEast()throws Exception{
-            System.out.println("No application here.");
+            less.Nothing();
         }
         public void West() throws Exception{
-            System.out.println("No application here.");
+            less.Nothing();
         }
         public void South() throws Exception{
-            System.out.println("No application here.");
+            less.Nothing();
         }
         
         public void readRoomFile() throws Exception{
@@ -276,6 +278,26 @@ class PlanetHades implements Planet
                 System.out.println(st);
             } 
             br.close();
+        
+        }
+        public boolean AttackFirstMonster() throws Exception{
+            //When the player attacks the Monster
+            String file = "Game\\Planet\\Hades\\Room 2\\Monster\\NumberOfHit.txt";
+            Battle enter = new Battle();
+            return enter.EntityAttack(false, file, false);
+            
+        
+        
+        }
+        public boolean MonsterAttacking() throws Exception{
+            //When the monster attacks the player
+            String playerFile;
+            playerFile = "Game\\Planet\\Player\\Hits.txt";
+            Battle enter = new Battle();
+            return enter.EntityAttack(false,playerFile, true);
+            
+            
+        
         
         }
         public void assistant() throws Exception{
@@ -404,15 +426,27 @@ class PlanetHades implements Planet
             } 
             br.close();
         }
-        public void Attack()throws Exception{
+        public boolean Attack()throws Exception{
             //Battle inside the cave attack by the player
-            //Maybe instead we pass the A into a file in battle monster so we can reuse the command
-            //in progess
-            int strike, chance;
+            //When the player attacks the monster
+            String deal;
             String file = "Game\\Planet\\Hades\\Room 3\\Monster\\NumberOfHit.txt";
-            String Condition = "";
-            AttackMonster damage = new AttackMonster();
-            System.out.println(damage.DealDamage(true, file));
+            
+            Battle enter = new Battle();
+            return enter.EntityAttack(true, file, false);
+            
+            
+            
+            
+        }
+        public boolean MonsterResponse()throws Exception{
+            //When the monster attacks the player
+            String deal;
+            String playerFile;
+            playerFile = "Game\\Planet\\Player\\Hits.txt";
+            
+            Battle enter = new Battle();
+            return enter.EntityAttack(true,playerFile, true);
             
             
             
