@@ -8,40 +8,8 @@ import java.io.*;
  */
 class PlanetHades implements Planet
 {
-
-    public void PassiveAssistantMode() throws Exception{
-        //This is the assistants passivemode
-        //so when the player is or is not interacting with the assistant this is what is happening
-        File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Android Assistant\\passive mode.txt");
-        BufferedReader br = new BufferedReader(new FileReader(file));
-            
-        String st;
-        while((st = br.readLine()) != null){
-            System.out.println(st);
-                
-        } 
-        br.close();    
-    }
-    public void PassiveAlexenderMode() throws Exception{
-        //This is Alexenders passive mode in the first room
-        //if the player is not on the planet, or has moved passed this planet this is what alexender is doing
-        //this is what alexender does before the player enters the 2nd room but changes after a story event
-        //the explosion later on
-        File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Alexender\\FirstpassiveMode.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-            st = br.readLine();
-            System.out.println(st);
-    
-    }
-    public void SecondPassiveAlexenderMode() throws Exception{
-        //After your the explosion alexenders passive mode changes to a new text
-        File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Alexender\\SecondpassiveMode.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-            st = br.readLine();
-            System.out.println(st);
-    }
+    Assistant dialog = new Assistant();
+    Alexender Alex_dialog = new Alexender();
     //Room One begins
     class roomOne implements PlanetHades.room.character, PlanetHades.room{
         public void readRoomFile() throws Exception{
@@ -58,15 +26,8 @@ class PlanetHades implements Planet
         }
         @Override
         public void readCharacterFile() throws Exception{
-            //Assistant dialog for room 1
-            File file = new File("Game\\Planet\\Hades\\Room 1\\Character\\Android Assistant\\assisant dialog.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-                
-            String st;
-            while((st = br.readLine()) != null){
-                System.out.println(st);
-            } 
-            br.close();
+            //Assistant dialog for room 
+            dialog.RoomOneDialog();
         }
         public void North()throws Exception{
             //Player goes North
@@ -163,8 +124,6 @@ class PlanetHades implements Planet
             File file = new File("Game\\Planet\\Hades\\Room 1\\runBack.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             
-            File Alex = new File("Game\\Planet\\Hades\\Room 1\\Character\\Alexender\\AlexenderDialog.txt");
-            BufferedReader fixShip = new BufferedReader(new FileReader(Alex));
             
             String st, AlexOffer;
             System.out.println("\n");
@@ -173,12 +132,8 @@ class PlanetHades implements Planet
                 
             } 
             System.out.println("\n");
-            while((AlexOffer = fixShip.readLine()) != null){
-                System.out.println(AlexOffer);
-                
-            } 
+            Alex_dialog.FixingShip();
             br.close();
-            fixShip.close();
         }
         public void HandOver() throws Exception{
             //When the player hands over the redDiamond to Alexender
@@ -247,15 +202,7 @@ class PlanetHades implements Planet
         @Override
         public void readCharacterFile() throws Exception{
             //Alexenders introduction dialog
-            File file = new File("Game\\Planet\\Hades\\Room 2\\Character\\Alexander\\Alexander dialog.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-                
-            String st;
-            while((st = br.readLine()) != null){
-                System.out.println(st);
-            } 
-            br.close();
-            
+            Alex_dialog.IntroductionAlexender();
         }
         @Override
         public void readMonsterFile() throws Exception{
@@ -304,23 +251,13 @@ class PlanetHades implements Planet
         }
         public void assistant() throws Exception{
             //Your companion tells you something is lurking in the background
-            File file = new File("Game\\Planet\\Hades\\Room 2\\Character\\Android Assistant\\room2 dialog.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-            while((st = br.readLine()) != null){
-                System.out.println(st);
-            } 
-            br.close();
+            dialog.RoomTwoDialog();
         }
-        public void Ask() throws Exception{
+        public void Ask(String question) throws Exception{
             //Ask about the planet to Alexender
-            File file = new File("Game\\Planet\\Hades\\Room 2\\Character\\Alexander\\AlexanderAsk.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-            while((st = br.readLine()) != null){
-                System.out.println(st);
-            } 
-            br.close();
+            if(question.contains("Ask")){
+                Alex_dialog.AskAboutPlanet();
+            }
         
         }
         public void Boom() throws Exception{
@@ -349,16 +286,8 @@ class PlanetHades implements Planet
     class RoomThree implements PlanetHades.room.character, PlanetHades.room, PlanetHades.room.monster{
         public void readCharacterFile() throws Exception{
             //the robot Assistant dialog after going North
-            File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\Android Assistant\\Room 3 dialog.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-                
-            String st;
-            while((st = br.readLine()) != null){
-                System.out.println(st);
-            } 
-            br.close();
-            
-            
+            dialog.RoomThreeDialog();
+
         }
         public void readRoomFile()throws Exception{
             //reads room 3 description
@@ -438,8 +367,6 @@ class PlanetHades implements Planet
             return enter.EntityAttack(true, file, false);
             
             
-            
-            
         }
         public boolean MonsterResponse()throws Exception{
             //When the monster attacks the player
@@ -451,7 +378,7 @@ class PlanetHades implements Planet
             return enter.EntityAttack(true,playerFile, true);
             
             
-            
+
         }
         public void EndOfBattle()throws Exception{
             //When the battle ends
@@ -469,15 +396,7 @@ class PlanetHades implements Planet
         }
         public void Alex() throws Exception{
             //Alexender shows up again after the battle
-            File file = new File("Game\\Planet\\Hades\\Room 3\\Character\\Alexender\\EndGame.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-                
-            String st;
-            System.out.println("\n");
-            while((st = br.readLine()) != null){
-                System.out.println(st);
-            } 
-            br.close();
+            Alex_dialog.EndPlanetDialog();
         }
         public void EndPlanet() throws Exception{
             //The end of the planet

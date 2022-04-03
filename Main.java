@@ -14,14 +14,16 @@ public class Main
         PlanetHades.RoomTwo L = H.new RoomTwo();
         PlanetHades.RoomThree K = H.new RoomThree();
         Commands I = new Commands();
+        Alexender pass = new Alexender();
+        Assistant voice = new Assistant();
 
         try{
             //When the player enters the planet, start describing the room
             Inh.readRoomFile();
             Inh.readCharacterFile();
             
-            H.PassiveAssistantMode();
-            H.PassiveAlexenderMode();
+            voice.PassiveAssistantMode();
+            pass.PassiveAlexenderMode();
             
             //Directions of room 1 that the player can go to
             //Should have the player enter north, west, south, or east
@@ -54,13 +56,13 @@ public class Main
             L.readRoomFile();
             L.readCharacterFile();
             //Maybe ask the player to type in ask(not necessary)
-            L.Ask();
+            L.Ask("Ask");
             L.Boom();
             L.Run();
             
             //go back to first room
             Inh.RunBack();
-            H.SecondPassiveAlexenderMode();
+            pass.SecondPassiveAlexenderMode();
             //Maybe have the player type in "hand over" or string containing hand over
             Inh.HandOver();
             Inh.SecondEast();
