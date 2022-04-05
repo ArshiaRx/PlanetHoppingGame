@@ -8,6 +8,12 @@ import java.io.*;
  */
 public class Assistant
 {
+    public String Hits()throws Exception{
+        String amount;
+        AssistantHitTaken H = new AssistantHitTaken();
+        amount = H.getHits();
+        return amount;
+    }
     public void PassiveAssistantMode() throws Exception{
         //This is the assistants passivemode
         //so when the player is or is not interacting with the assistant this is what is happening

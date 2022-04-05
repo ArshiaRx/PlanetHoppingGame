@@ -10,6 +10,7 @@ class PlanetHades implements Planet
 {
     Assistant dialog = new Assistant();
     Alexender Alex_dialog = new Alexender();
+    DirectionLess less = new DirectionLess();
     //Room One begins
     class roomOne implements PlanetHades.room.character, PlanetHades.room{
         public void readRoomFile() throws Exception{
@@ -170,7 +171,6 @@ class PlanetHades implements Planet
     
     class RoomTwo implements PlanetHades.room.character, room.monster, PlanetHades.room{
         //Direction in this room is meaningless since you fight a monster here
-        DirectionLess less = new DirectionLess();
         
         public void North()throws Exception{
             less.Nothing();
@@ -229,7 +229,7 @@ class PlanetHades implements Planet
             br.close();
         
         }
-        public boolean AttackFirstMonster() throws Exception{
+        public boolean Attack() throws Exception{
             //When the player attacks the Monster
             String file = "Game\\Planet\\Hades\\Room 2\\Monster\\NumberOfHit.txt";
             Battle enter = new Battle();
@@ -238,7 +238,7 @@ class PlanetHades implements Planet
         
         
         }
-        public boolean MonsterAttacking() throws Exception{
+        public boolean MonsterResponse() throws Exception{
             //When the monster attacks the player
             String playerFile;
             playerFile = "Game\\Planet\\Player\\Hits.txt";
@@ -329,10 +329,10 @@ class PlanetHades implements Planet
             
         }
         public void West() throws Exception{
-            System.out.println("No application here.");
+            less.Nothing();
         }
         public void South() throws Exception{
-            System.out.println("No application here.");
+            less.Nothing();
         }
         public void readMonsterFile() throws Exception{
             // before the monster attacks
@@ -357,6 +357,7 @@ class PlanetHades implements Planet
             } 
             br.close();
         }
+        //"A" represents the amount of hits the player or Monster can take
         public boolean Attack()throws Exception{
             //Battle inside the cave attack by the player
             //When the player attacks the monster

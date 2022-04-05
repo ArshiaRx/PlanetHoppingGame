@@ -46,7 +46,7 @@ public class AttackMonster
             
             
         if(crit && !monsterUse){
-            fight.setcriticalHit(30);
+            fight.setcriticalHit(100);
         }
         if(monsterUse){
             fight.setcriticalHit(1);

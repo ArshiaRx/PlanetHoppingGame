@@ -8,6 +8,12 @@ import java.io.*;
  */
 public class Alexender
 {
+    public String Hits()throws Exception{
+        String amount;
+        AlexenderHitTaken H = new AlexenderHitTaken();
+        amount = H.getHits();
+        return amount;
+    }
     public String PassiveAlexenderMode() throws Exception{
         //This is Alexenders passive mode in the first room
         //if the player is not on the planet, or has moved passed this planet this is what alexender is doing

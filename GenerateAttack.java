@@ -14,8 +14,8 @@ public class GenerateAttack
     private int criticalHit;
     public GenerateAttack(){
         Random dice = new Random();
-        this.Attacker = dice.nextInt(15);
-        this.criticalHit = dice.nextInt(10);
+        this.Attacker = dice.nextInt(100);
+        this.criticalHit = dice.nextInt(40);
     }
     public int getAttack(){
         return Attacker;
