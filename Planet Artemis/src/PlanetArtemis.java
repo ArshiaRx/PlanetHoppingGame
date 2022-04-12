@@ -6,7 +6,7 @@ class PlanetArtemis implements Planet {
     Assistant Assistant = new Assistant();
     Inventory Inventory = new Inventory();
 
-    class Room1 implements PlanetArtemis.room.character, PlanetArtemis.room{
+    class Room1 implements PlanetArtemis.room{
         //Read The planet Description
         public void readPlanetFile() throws Exception{
             File file = new File("Planet Artemis\\PlanetDescription.txt");
@@ -67,9 +67,43 @@ class PlanetArtemis implements Planet {
 
         //Discovering West
         public void DiscoverWest() throws Exception{
+            File file = new File("Planet Artemis\\Direction\\DiscoverWest.txt");
+            BufferedReader read = new BufferedReader(new FileReader(file));
+            String string;
 
+            while ((string = read.readLine()) != null){
+                System.out.println(string);
+            }
+            read.close();
         }
 
+        public void West() throws Exception{
+
+        }
+        public void DiscoverEast() throws Exception{
+
+        }
+        public void East() throws Exception{
+
+        }
+        public void DiscoverSouth() throws Exception{
+            File file = new File("Planet Artemis\\Direction\\DiscoverSouth.txt");
+            BufferedReader read = new BufferedReader(new FileReader(file));
+            String string;
+
+            while ((string = read.readLine()) != null){
+                System.out.println(string);
+            }
+            read.close();
+        }
+
+        public void South() throws Exception {
+
+        }
+        @Override
+        public void Monster() throws Exception{
+
+        }
     }
 }
 

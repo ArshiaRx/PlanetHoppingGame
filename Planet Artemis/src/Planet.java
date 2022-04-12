@@ -18,6 +18,8 @@ public interface Planet {
         public void South() throws Exception;
 
         void readCharacterFile() throws Exception;
+
+        void Monster() throws Exception;
     }
     interface character{
         public void readCharacterFile() throws Exception;
