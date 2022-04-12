@@ -1,0 +1,7 @@
+[Assistant]:
+OH appolo!
+Look at that tree it seems like there is a letter stick to the tree.
+Do you want to have a look at it ?!
+1. yes, lets check
+2. No, let's continue
+Enter a number ...

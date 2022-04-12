@@ -1,0 +1,6 @@
+[Assistant]:
+Appolo there is as you see we are in a two-way intersection.
+You can choose to go ...
+1. East
+2. West
+Enter a number ...
