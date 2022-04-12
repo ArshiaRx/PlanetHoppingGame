@@ -3,7 +3,9 @@ import java.io.File;
 import java.io.FileReader;
 
 class PlanetArtemis implements Planet {
-    Assistant guides = new Assistant();
+    Assistant Assistant = new Assistant();
+    Inventory Inventory = new Inventory();
+
     class Room1 implements PlanetArtemis.room.character, PlanetArtemis.room{
         //Read The planet Description
         public void readPlanetFile() throws Exception{
@@ -52,16 +54,21 @@ class PlanetArtemis implements Planet {
             }
             read.close();
         }
-        //public void DiscoverWest() throws Exception{
-        /*@Override
-        public void readCharacterFile() throws Exception {
-                guides.NorthAssistant();
-            }*/
+
         @Override
         public void readCharacterFile() throws Exception {
-            guides.NorthAssistant();
+            Assistant.NorthAssistant();
         }
-        ublic
+
+        @Override
+        public void readItemFile() throws Exception {
+            Inventory.Sword();
+        }
+
+        //Discovering West
+        public void DiscoverWest() throws Exception{
+
+        }
 
     }
 }

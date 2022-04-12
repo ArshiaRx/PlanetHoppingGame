@@ -6,6 +6,8 @@ public interface Planet {
         public void DiscoverNorth() throws Exception;
         public void North() throws Exception;
 
+        void readItemFile() throws Exception;
+
         public void DiscoverWest() throws Exception;
         public void West() throws Exception;
 
@@ -15,11 +17,6 @@ public interface Planet {
         public void DiscoverSouth() throws Exception;
         public void South() throws Exception;
 
-        //public void DiscoverWest() throws Exception{
-        /*@Override
-        public void readCharacterFile() throws Exception {
-                guides.NorthAssistant();
-            }*/
         void readCharacterFile() throws Exception;
     }
     interface character{
