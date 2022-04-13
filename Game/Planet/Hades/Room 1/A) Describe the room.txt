@@ -7,5 +7,3 @@ you predict that the light is coming from a resident of this planet.
 You look west and instant you feel the engulfing darkness that might swallow you whole. 
 Looking south you feel like theirs something over there. 
 To the east, you hearing an absolutely terrifying roar.   
-
-[Android Assistant Dialog text]: 

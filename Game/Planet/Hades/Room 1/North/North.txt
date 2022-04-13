@@ -6,5 +6,3 @@ Until it feels like you step on some pointy rock.
 You keep moving north, and it looks like the artificial light is getting brighter, but at the same time, 
 a roar gets louder.
 
-[Move to next Room]
-[Auto saves]
